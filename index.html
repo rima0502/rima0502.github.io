@@ -3,47 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My GitHub Page</title>
+    <title>My Bright GitHub Page</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: #f0f8ff;
+            color: #333;
             margin: 0;
             padding: 0;
         }
         header {
-            background-color: #4CAF50;
-            color: white;
+            background-color: #87ceeb;
+            color: #fff;
             padding: 1em;
             text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         main {
             margin: 20px;
             padding: 20px;
-            background-color: white;
+            background-color: #fff;
             border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         footer {
             text-align: center;
             padding: 1em;
-            background-color: #ddd;
+            background-color: #87ceeb;
+            color: #fff;
             position: fixed;
             width: 100%;
             bottom: 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .highlight {
+            color: #87ceeb;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .bright-image {
+            max-width: 100%;
+            border: 3px solid #87ceeb;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Welcome to My GitHub Page</h1>
+        <h1>Welcome to My Bright GitHub Page</h1>
     </header>
     <main>
-        <h2>About Me</h2>
-        <p>Hello! I'm a developer and this is my GitHub Page.</p>
+        <div class="container">
+            <h2 class="highlight">About Me</h2>
+            <p>Hello! I'm a developer and this is my GitHub Page, now with a bright and lively look.</p>
+            <img src="https://via.placeholder.com/600x400.png?text=Bright+Image" alt="Bright Image" class="bright-image">
+        </div>
     </main>
     <footer>
-        <p>&copy; 2024 My GitHub Page</p>
+        <p>&copy; 2024 My Bright GitHub Page</p>
     </footer>
 </body>
 </html>
