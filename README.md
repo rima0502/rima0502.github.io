@@ -1,1 +1,0 @@
-# rima0502.github.io
