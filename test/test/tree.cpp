@@ -20,10 +20,10 @@ Tree::~Tree() {
 
 void Tree::Insert(int key, DATA data) {
     if (root == nullptr) {
-        root = new Node(key, data);  // 트리가 비어 있으면 루트 노드를 생성
+        root = new Node(key, data);
     }
     else {
-        root->Insert(key, data);  // 루트 노드가 있으면 해당 노드에서 삽입 시작
+        root->Insert(key, data);
     }
 }
 
@@ -61,28 +61,50 @@ void Tree::Clear() {
 
 void Tree::Remove(int key)
 {
-    std::stack<Node*> cont;
-    Tree* p = nullptr;
-    Node* it = p->Find(key);
-    if (it != nullptr)
-    {
-        cont.push(it->Left);
-        cont.push(it->Right);
+    RemoveNode(root, key);
+}
+
+Node* Tree::RemoveNode(Node* node, int key)
+{
+    if (node == nullptr) {
+        return nullptr;
     }
 
-
-
-    Tree* u;
-    Node* l = u->Find(key);
-    while (l->Left != nullptr || l->Right != nullptr)
-    {
-        l = l->Left;
+    if (key < node->First()) {
+        node->Left = RemoveNode(node->Left, key);
     }
-    Node* r = u->Find(key);
-    while (r->Right != nullptr || r->Left != nullptr)
-    {
-        r = r->Right;
+    else if (key > node->First()) {
+        node->Right = RemoveNode(node->Right, key);
     }
+    else {
+        if (node->Left == nullptr && node->Right == nullptr) {
+            delete node;
+            return nullptr;
+        }
+        else if (node->Left == nullptr) {
+            Node* temp = node->Right;
+            delete node;
+            return temp;
+        }
+        else if (node->Right == nullptr) {
+            Node* temp = node->Left;
+            delete node;
+            return temp;
+        }
+        else {
+            Node* temp = FindMin(node->Right);
+            node->Key = temp->Key;
+            node->Right = RemoveNode(node->Right, temp->Key);
+        }
+    }
+    return node;
+}
+
+Node* Tree::FindMin(Node* node) {
+    while (node && node->Left != nullptr) {
+        node = node->Left;
+    }
+    return node;
 }
 
 void Tree::Print() {
@@ -91,10 +113,9 @@ void Tree::Print() {
         return;
     }
 
-    int length = Length(); // 트리의 길이를 계산
+    int length = Length();
     std::cout << "Tree Length = " << length << std::endl;
 
-    // 루트 노드를 시작으로 출력
     std::vector<bool> ids;
     root->PrintNode(0, ids);
 }

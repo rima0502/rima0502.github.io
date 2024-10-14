@@ -36,5 +36,8 @@ public:
 	//Finds and removes a Node given by its key
 	void Remove(int key);
 
+	Node* RemoveNode(Node* node, int key);
+	Node* FindMin(Node*);
+
 	void Print();
 };

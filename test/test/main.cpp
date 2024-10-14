@@ -19,6 +19,8 @@ int main() {
     tree.Insert(19, DATA(49));
     tree.Insert(18, DATA(81));
 
+    tree.Remove(7);
+
     tree.Print();
 
     return 0;

@@ -1,26 +1,26 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\BCA\\Desktop\\test\\",
+  "WorkspaceRootPath": "C:\\Users\\BCA\\Desktop\\Tree Practice\\rima0502.github.io\\test\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3ED876DC-CE30-41AD-8E1B-5085D63C70AF}|test\\test.vcxproj|C:\\Users\\BCA\\Desktop\\test\\test\\node.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{3ED876DC-CE30-41AD-8E1B-5085D63C70AF}|test\\test.vcxproj|C:\\Users\\BCA\\Desktop\\Tree Practice\\rima0502.github.io\\test\\test\\node.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{3ED876DC-CE30-41AD-8E1B-5085D63C70AF}|test\\test.vcxproj|solutionrelative:test\\node.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3ED876DC-CE30-41AD-8E1B-5085D63C70AF}|test\\test.vcxproj|C:\\Users\\BCA\\Desktop\\test\\test\\tree.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{3ED876DC-CE30-41AD-8E1B-5085D63C70AF}|test\\test.vcxproj|solutionrelative:test\\tree.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3ED876DC-CE30-41AD-8E1B-5085D63C70AF}|test\\test.vcxproj|C:\\Users\\BCA\\Desktop\\test\\test\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{3ED876DC-CE30-41AD-8E1B-5085D63C70AF}|test\\test.vcxproj|C:\\Users\\BCA\\Desktop\\Tree Practice\\rima0502.github.io\\test\\test\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{3ED876DC-CE30-41AD-8E1B-5085D63C70AF}|test\\test.vcxproj|solutionrelative:test\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3ED876DC-CE30-41AD-8E1B-5085D63C70AF}|test\\test.vcxproj|C:\\Users\\BCA\\Desktop\\test\\test\\node.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{3ED876DC-CE30-41AD-8E1B-5085D63C70AF}|test\\test.vcxproj|solutionrelative:test\\node.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{3ED876DC-CE30-41AD-8E1B-5085D63C70AF}|test\\test.vcxproj|C:\\Users\\BCA\\Desktop\\Tree Practice\\rima0502.github.io\\test\\test\\tree.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{3ED876DC-CE30-41AD-8E1B-5085D63C70AF}|test\\test.vcxproj|solutionrelative:test\\tree.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3ED876DC-CE30-41AD-8E1B-5085D63C70AF}|test\\test.vcxproj|C:\\Users\\BCA\\Desktop\\test\\test\\tree.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{3ED876DC-CE30-41AD-8E1B-5085D63C70AF}|test\\test.vcxproj|C:\\Users\\BCA\\Desktop\\Tree Practice\\rima0502.github.io\\test\\test\\tree.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{3ED876DC-CE30-41AD-8E1B-5085D63C70AF}|test\\test.vcxproj|solutionrelative:test\\tree.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3ED876DC-CE30-41AD-8E1B-5085D63C70AF}|test\\test.vcxproj|C:\\Users\\BCA\\Desktop\\Tree Practice\\rima0502.github.io\\test\\test\\node.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{3ED876DC-CE30-41AD-8E1B-5085D63C70AF}|test\\test.vcxproj|solutionrelative:test\\node.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,17 +30,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 328,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "node.hpp",
-              "DocumentMoniker": "C:\\Users\\BCA\\Desktop\\test\\test\\node.hpp",
+              "DocumentMoniker": "C:\\Users\\BCA\\Desktop\\Tree Practice\\rima0502.github.io\\test\\test\\node.hpp",
               "RelativeDocumentMoniker": "test\\node.hpp",
-              "ToolTip": "C:\\Users\\BCA\\Desktop\\test\\test\\node.hpp",
+              "ToolTip": "C:\\Users\\BCA\\Desktop\\Tree Practice\\rima0502.github.io\\test\\test\\node.hpp",
               "RelativeToolTip": "test\\node.hpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAYwBsAAABFAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAYwAsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-09-10T00:38:06.848Z",
               "IsPinned": true,
@@ -48,16 +48,17 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "tree.hpp",
-              "DocumentMoniker": "C:\\Users\\BCA\\Desktop\\test\\test\\tree.hpp",
+              "DocumentMoniker": "C:\\Users\\BCA\\Desktop\\Tree Practice\\rima0502.github.io\\test\\test\\tree.hpp",
               "RelativeDocumentMoniker": "test\\tree.hpp",
-              "ToolTip": "C:\\Users\\BCA\\Desktop\\test\\test\\tree.hpp",
+              "ToolTip": "C:\\Users\\BCA\\Desktop\\Tree Practice\\rima0502.github.io\\test\\test\\tree.hpp",
               "RelativeToolTip": "test\\tree.hpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAQAAAA",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAYwCcAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-09-10T00:38:08.672Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
@@ -71,13 +72,13 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "main.cpp",
-              "DocumentMoniker": "C:\\Users\\BCA\\Desktop\\test\\test\\main.cpp",
+              "DocumentMoniker": "C:\\Users\\BCA\\Desktop\\Tree Practice\\rima0502.github.io\\test\\test\\main.cpp",
               "RelativeDocumentMoniker": "test\\main.cpp",
-              "ToolTip": "C:\\Users\\BCA\\Desktop\\test\\test\\main.cpp",
+              "ToolTip": "C:\\Users\\BCA\\Desktop\\Tree Practice\\rima0502.github.io\\test\\test\\main.cpp",
               "RelativeToolTip": "test\\main.cpp",
-              "ViewState": "AQIAAAEAAAAAAAAAAAAAABMAAAAeAAAA",
+              "ViewState": "AQIAAAEAAAAAAAAAAAAAABUAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-09-10T01:45:08.732Z",
               "IsPinned": true,
@@ -85,13 +86,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "tree.cpp",
-              "DocumentMoniker": "C:\\Users\\BCA\\Desktop\\test\\test\\tree.cpp",
+              "DocumentMoniker": "C:\\Users\\BCA\\Desktop\\Tree Practice\\rima0502.github.io\\test\\test\\tree.cpp",
               "RelativeDocumentMoniker": "test\\tree.cpp",
-              "ToolTip": "C:\\Users\\BCA\\Desktop\\test\\test\\tree.cpp",
+              "ToolTip": "C:\\Users\\BCA\\Desktop\\Tree Practice\\rima0502.github.io\\test\\test\\tree.cpp",
               "RelativeToolTip": "test\\tree.cpp",
-              "ViewState": "AQIAADQAAAAAAAAAAAAmwEwAAAA1AAAA",
+              "ViewState": "AQIAACQAAAAAAAAAAAAnwDIAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-09-10T00:38:07.936Z",
               "IsPinned": true,
@@ -101,11 +102,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "node.cpp",
-              "DocumentMoniker": "C:\\Users\\BCA\\Desktop\\test\\test\\node.cpp",
+              "DocumentMoniker": "C:\\Users\\BCA\\Desktop\\Tree Practice\\rima0502.github.io\\test\\test\\node.cpp",
               "RelativeDocumentMoniker": "test\\node.cpp",
-              "ToolTip": "C:\\Users\\BCA\\Desktop\\test\\test\\node.cpp",
-              "RelativeToolTip": "test\\node.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACEAAAAZAAAA",
+              "ToolTip": "C:\\Users\\BCA\\Desktop\\Tree Practice\\rima0502.github.io\\test\\test\\node.cpp*",
+              "RelativeToolTip": "test\\node.cpp*",
+              "ViewState": "AQIAADEAAAAAAAAAAAAmwDwAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-09-10T07:09:43.464Z",
               "IsPinned": true,
