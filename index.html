@@ -1,80 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My GitHub Page</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f8ff;
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #87ceeb;
-            color: #fff;
-            padding: 1em;
-            text-align: center;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        main {
-            margin: 20px;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        footer {
-            text-align: center;
-            padding: 1em;
-            background-color: #87ceeb;
-            color: #fff;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .highlight {
-            color: #87ceeb;
-        }
-        .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-        .bright-image {
-            width: 600px; /* Set the width to 600px */
-            height: 400px; /* Set the height to 400px */
-            border: 3px solid #87ceeb;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
-            margin-top: 20px;
-        }
-        iframe {
-            width: 600px;
-            height: 500px;
-            border: none;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./vars.css">
+  <link rel="stylesheet" href="./style.css">
+  
+  
+  <style>
+   a,
+   button,
+   input,
+   select,
+   h1,
+   h2,
+   h3,
+   h4,
+   h5,
+   * {
+       box-sizing: border-box;
+       margin: 0;
+       padding: 0;
+       border: none;
+       text-decoration: none;
+       background: none;
+   
+       -webkit-font-smoothing: antialiased;
+   }
+   
+   menu, ol, ul {
+       list-style-type: none;
+       margin: 0;
+       padding: 0;
+   }
+   </style>
+  <title>Document</title>
 </head>
 <body>
-    <header>
-        <h1>Welcome to My GitHub Page!</h1>
-    </header>
-    <main>
-        <div class="container">
-            <h2 class="highlight">About Me</h2>
-            <p>Hello! I'm a developer and this is my GitHub Page</p>
-            <!-- 수정된 이미지 URL -->
-            <img src="https://raw.githubusercontent.com/rima0502/rima0502.github.io/main/20250217_163617.jpg" alt="Bright Image" class="bright-image">
-
-            <!-- PDF Embed using Google Docs Viewer -->
-            <h3>My Portfolio (PDF)</h3>
-            <iframe src="https://docs.google.com/viewer?embedded=true&url=https://raw.githubusercontent.com/rima0502/rima0502.github.io/main/DongrimKang_portfolio.pdf" width="600" height="500"></iframe>
+  <div class="home">
+    <div class="projects">Projects</div>
+    <div class="technical-skills">Technical Skills</div>
+    <div class="interpersonal-skills">Interpersonal Skills</div>
+    <div class="card">
+      <img class="image-11" src="image-110.png" />
+      <div class="copy">
+        <div class="programer-bomber-man-busan">Programer – BomberMan, Busan</div>
+        <div
+          class="august-2025-this-is-c-based-custom-engine-developed-bomberman-game-it-s-a-game-where-you-destroy-obstacles-by-exploding-bombs-and-win-by-eliminating-your-opponents-first"
+        >
+          August 2025
+          <br />
+          This is C++-based custom engine-developed Bomberman game.
+          <br />
+          It’s a game where you destroy obstacles by exploding bombs and win by
+          eliminating your opponents first.
         </div>
-    </main>
+      </div>
+    </div>
+    <div class="card2">
+      <img class="game-logo-1" src="game-logo-10.png" />
+      <div class="copy2">
+        <div class="blade-of-flame">
+          <br />
+          <br />
+          Programer - Blade of flame, Busan
+        </div>
+        <div
+          class="september-2024-this-game-is-developed-using-the-alpha-engine-in-a-c-environment-the-player-can-level-up-by-defeating-incoming-enemies-becoming-stronger-and-then-defeat-the-boss-to-achieve-victory"
+        >
+          September 2024
+          <br />
+          This game is developed using the AlphaEngine in a C++ environment.
+          <br />
+          The player can level up by defeating incoming enemies, becoming
+          stronger, and then defeat the boss to achieve victory.
+        </div>
+      </div>
+    </div>
+    <div class="card3">
+      <img class="image-13" src="image-130.png" />
+      <div class="copy3">
+        <div class="programer-hyper-auto-pets-busan">
+          Programer - Hyper Auto Pets, Busan
+        </div>
+        <div
+          class="may-2024-this-game-is-a-card-game-developed-using-the-c-processing-engine-in-a-c-environment-each-card-has-its-own-unique-abilities-and-by-upgrading-the-shop-you-can-purchase-stronger-cards-to-easily-defeat-enemies"
+        >
+          May 2024
+          <br />
+          This game is a card game developed using the CProcessing engine in a C++
+          environment.
+          <br />
+          Each card has its own unique abilities, and by upgrading the shop, you
+          can purchase stronger cards to easily defeat enemies.
+        </div>
+      </div>
+    </div>
+    <div class="card4">
+      <img class="image-12" src="image-120.png" />
+      <div class="copy2">
+        <div class="programer-gonjiamerica-busan">
+          Programer – Gonjiamerica, Busan
+        </div>
+        <div
+          class="january-2025-this-is-a-first-person-horror-game-developed-using-unreal-engine-the-player-takes-on-a-mission-to-visit-a-mental-hospital-where-they-encounter-various-monsters"
+        >
+          January 2025
+          <br />
+          This is a first-person horror game developed using Unreal Engine.
+          <br />
+          The player takes on a mission to visit a mental hospital, where they
+          encounter various monsters.
+        </div>
+      </div>
+    </div>
+    <div class="work-experience">WORK EXPERIENCE</div>
+    <div class="card5">
+      <img class="image-10" src="image-100.png" />
+      <div class="copy4">
+        <div class="unreal-engine-5">UnrealEngine5</div>
+        <div
+          class="during-the-development-of-gonjiamerica-a-first-person-shooter-horror-game-i-gained-a-deep-understanding-of-unreal-engine-s-structure-and-its-various-components-which-significantly-enhanced-my-game-development-skills"
+        >
+          During the development of Gonjiamerica, a first-person shooter horror
+          game,
+          <br />
+          I gained a deep understanding of Unreal Engine&#039;s structure
+          <br />
+          and its various components, which significantly enhanced my game
+          development skills.
+        </div>
+      </div>
+    </div>
+    <div class="card6">
+      <img class="image-9" src="image-90.png" />
+      <div class="copy5">
+        <div class="bomber-man">BomberMan</div>
+        <div
+          class="i-was-able-to-gain-a-solid-understanding-of-open-gl-usage-and-component-based-game-architecture-i-was-also-able-to-understand-how-to-output-sound-using-open-al"
+        >
+          I was able to gain a solid understanding of OpenGL usage and
+          component-based game architecture.
+          <br />
+          I was also able to understand how to output sound using OpenAL.
+        </div>
+      </div>
+    </div>
+    <div class="card7">
+      <img class="image-8" src="image-80.png" />
+      <div class="copy5">
+        <div class="blade-of-flame2">Blade of Flame</div>
+        <div
+          class="i-was-able-to-understand-how-to-optimize-the-creation-and-removal-of-objects-using-a-memory-pool"
+        >
+          I was able to understand how to optimize the creation and removal of
+          objects using a memory pool.
+        </div>
+      </div>
+    </div>
+    <div class="custom-engine-c-c-unreal-engine-git-blender">
+      CustomEngine, C/C++, UnrealEngine, git, blender
+    </div>
+    <div class="section">
+      <div class="informations">Informations</div>
+      <div class="phone-number-8210-6858-1767">
+        Phone number : +8210 6858 1767
+      </div>
+      <div class="linked-in-dongrimkang">
+        <span>
+          <span class="linked-in-dongrimkang-span">LinkedIn :</span>
+          <span class="linked-in-dongrimkang-span2">dongrimkang</span>
+        </span>
+      </div>
+      <div class="github-rima-0502">
+        <span>
+          <span class="github-rima-0502-span">Github :</span>
+          <span class="github-rima-0502-span2">rima0502</span>
+        </span>
+      </div>
+      <div class="email-rima-0502-naver-com">Email : rima0502@naver.com</div>
+    </div>
+    <div class="copy6">
+      <div class="page-title">
+        <div class="dongrim-kang">Dongrim Kang</div>
+      </div>
+    </div>
+    <div
+      class="hi-i-m-dongrim-i-m-game-developer-i-graduated-from-digi-pen-academy-busan-as-a-developer-i-solve-problems-and-provide-innovative-solutions-through-various-projects-take-a-look-at-how-i-have-solved-problems-through-my-experience-and-projects"
+    >
+      Hi, I’m dongrim.
+      <br />
+      I’m game developer. I graduated from DigiPen Academy Busan.
+      <br />
+      <br />
+      As a developer, I solve problems and provide innovative solutions through
+      various projects.
+      <br />
+      ​
+      <br />
+      Take a look at how I have solved problems through my experience and
+      projects.
+    </div>
+    <div
+      class="communication-within-the-team-was-crucial-throughout-the-game-jam-project-we-held-regular-scrum-meetings-and-checked-each-team-member-s-role-and-progress-every-hour-this-allowed-us-to-track-each-other-s-progress-and-quickly-exchange-feedback-where-necessary-in-particular-i-took-on-the-role-of-mediating-between-the-graphic-designer-and-the-programmer-to-ensure-smooth-communication-i-clearly-conveyed-the-design-and-functional-requirements-which-helped-keep-the-project-on-track-and-running-smoothly"
+    >
+      Communication within the team was crucial throughout the game jam project.
+      <br />
+      We held regular scrum meetings and checked each team member&#039;s role and
+      progress every hour.
+      <br />
+      This allowed us to track each other&#039;s progress and quickly exchange
+      feedback where necessary.
+      <br />
+      In particular, I took on the role of mediating between the graphic designer
+      and the programmer to ensure smooth communication.
+      <br />
+      I clearly conveyed the design and functional requirements, which helped keep
+      the project on track and running smoothly.
+    </div>
+    <img class="c-cpp" src="c-cpp0.png" />
+    <img class="image-4" src="image-40.png" />
+    <img class="image-5" src="image-50.png" />
+    <img class="image-6" src="image-60.png" />
+    <img class="image-7" src="image-70.png" />
+    <div class="leadership-experience">LEADERSHIP EXPERIENCE</div>
+  </div>
+  
 </body>
 </html>
