@@ -3,7 +3,7 @@ import React from 'react';
 
 export const InterpersonalSkills: React.FC = () => {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-white scroll-mt-24">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center gap-2 mb-10">
           <span className="material-icons text-primary text-xl">groups</span>

@@ -9,6 +9,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script>
+        // 브라우저 환경에서 process.env 참조 에러 방지를 위한 폴리필
+        window.process = { env: { API_KEY: '' } };
+        
         tailwind.config = {
             theme: {
                 extend: {
@@ -41,6 +44,8 @@
 </head>
 <body class="bg-white text-slate-800 antialiased">
     <div id="root"></div>
+    <!-- 메인 엔트리 포인트 스크립트 추가 -->
+    <script type="module" src="./index.tsx"></script>
 <script type="module" src="/index.tsx"></script>
 </body>
 </html>
