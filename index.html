@@ -4,20 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dongrim Kang - Portfolio</title>
+    <title>Dongrim Kang - Game Developer Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script>
-        // 브라우저 환경에서 process.env 참조 에러 방지를 위한 폴리필
+        // Browser environment polyfill
         window.process = { env: { API_KEY: '' } };
         
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: {
-                        primary: '#e11d48',
-                    },
+                    colors: { primary: '#e11d48' },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
                         display: ['Space Grotesk', 'sans-serif'],
@@ -29,14 +27,22 @@
     <style>
         html { scroll-behavior: smooth; }
         body { font-family: 'Inter', sans-serif; }
+        .animate-in { animation: fadeIn 0.3s ease-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #e11d48; border-radius: 10px; }
     </style>
-<script type="importmap">
+    <script type="importmap">
 {
   "imports": {
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react": "https://esm.sh/react@^19.2.3",
-    "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+    "react": "https://esm.sh/react@19.0.0",
+    "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
+    "htm": "https://esm.sh/htm@3.1.1",
+    "@google/genai": "https://esm.sh/@google/genai@1.34.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/"
   }
 }
 </script>
@@ -44,8 +50,350 @@
 </head>
 <body class="bg-white text-slate-800 antialiased">
     <div id="root"></div>
-    <!-- 메인 엔트리 포인트 스크립트 추가 -->
-    <script type="module" src="./index.tsx"></script>
+
+    <script type="module">
+        import React, { useState, useRef, useEffect } from 'react';
+        import ReactDOM from 'react-dom/client';
+        import htm from 'htm';
+        import { GoogleGenAI } from "@google/genai";
+
+        const html = htm.bind(React.createElement);
+
+        // --- Data Definitions ---
+        const PROJECTS = [
+            { title: 'BomberMan', platform: 'Custom Engine', role: 'PROGRAMMER • CUSTOM C++ ENGINE', date: 'Aug 2025', desc: 'Built a fully functional Bomberman clone from scratch using a custom C++ engine.', img: 'https://images.unsplash.com/photo-1551103782-8ab07afd45c1?auto=format&fit=crop&q=80&w=600' },
+            { title: 'Blade of Flame', platform: 'AlphaEngine', role: 'PROGRAMMER • ALPHAENGINE', date: 'Sep 2024', desc: 'An action-packed survival game with memory pooling optimization.', img: 'https://images.unsplash.com/photo-1552824734-80795562cdad?auto=format&fit=crop&q=80&w=600' },
+            { title: 'Gonjiamerica', platform: 'Unreal Engine', role: 'PROGRAMMER • UNREAL 5', date: 'Jan 2025', desc: 'A psychological horror experience using Lumen and Nanite.', img: 'https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&q=80&w=600' },
+            { title: 'Hyper Auto Pets', platform: 'CProcessing', role: 'PROGRAMMER • CPROCESSING', date: 'May 2024', desc: 'Strategy card battler focused on clean OOP architecture.', img: 'https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?auto=format&fit=crop&q=80&w=600' }
+        ];
+
+        const SKILLS = [
+            { name: 'Custom Engine', logo: 'https://img.icons8.com/fluency/96/engine.png' },
+            { name: 'C / C++', logo: 'https://img.icons8.com/color/96/c-plus-plus-logo.png' },
+            { name: 'Unreal Engine', logo: 'https://img.icons8.com/color/96/unreal-engine.png' },
+            { name: 'Git', logo: 'https://img.icons8.com/color/96/git.png' },
+            { name: 'Blender', logo: 'https://img.icons8.com/color/96/blender-3d.png' }
+        ];
+
+        const EXPERIENCES = [
+            { title: 'Unreal Engine 5', sub: 'GONJIAMERICA', desc: 'Deep understanding of UE5 architecture and high-fidelity visual tools.', icon: 'hub' },
+            { title: 'BomberMan Clone', sub: 'OPENGL', desc: 'Mastered component-based architecture and low-level rendering.', icon: 'visibility' },
+            { title: 'Blade of Flame', sub: 'OPTIMIZATION', desc: 'Implemented memory pooling for smooth performance.', icon: 'settings' }
+        ];
+
+        // --- Components ---
+
+        const Header = () => {
+            const scrollToSection = (e, id) => {
+                e.preventDefault();
+                const element = document.getElementById(id);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            };
+
+            return html`
+                <nav className="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
+                    <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+                        <div className="flex items-center gap-2 cursor-pointer" onClick=${() => window.scrollTo({top: 0, behavior: 'smooth'})}>
+                            <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
+                                <span className="material-icons text-white text-sm">person</span>
+                            </div>
+                            <span className="font-display font-bold text-lg tracking-tight">Dongrim Kang</span>
+                        </div>
+                        <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
+                            <a href="#skills" onClick=${(e) => scrollToSection(e, 'skills')} className="hover:text-primary transition-colors">Skills</a>
+                            <a href="#projects" onClick=${(e) => scrollToSection(e, 'projects')} className="hover:text-primary transition-colors">Projects</a>
+                            <a href="#experience" onClick=${(e) => scrollToSection(e, 'experience')} className="hover:text-primary transition-colors">Experience</a>
+                            <a href="#leadership" onClick=${(e) => scrollToSection(e, 'leadership')} className="hover:text-primary transition-colors">Leadership</a>
+                            <a href="#contact" onClick=${(e) => scrollToSection(e, 'contact')} className="px-5 py-2 bg-slate-900 text-white rounded-full hover:bg-slate-800 transition-all shadow-sm">Contact</a>
+                        </div>
+                        <div className="md:hidden"><span className="material-icons text-slate-600">menu</span></div>
+                    </div>
+                </nav>
+            `;
+        };
+
+        const Hero = () => {
+            const scrollToSection = (id) => {
+                const element = document.getElementById(id);
+                if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            };
+
+            return html`
+                <section className="relative pt-32 pb-24 overflow-hidden min-h-[90vh] flex items-center">
+                    <div className="absolute inset-0 bg-[radial-gradient(#f1f5f9_1px,transparent_1px)] [background-size:40px_40px] -z-20 opacity-50"></div>
+                    <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+                        <div className="max-w-2xl relative">
+                            <h1 className="text-6xl lg:text-8xl font-display font-bold text-slate-900 leading-[1.1] mb-8">
+                                Building the <br /> <span className="text-primary italic">Future of Fun.</span>
+                            </h1>
+                            <p className="text-xl text-slate-600 leading-relaxed mb-10">
+                                Hi, I'm <span className="text-slate-900 font-bold">Dongrim Kang</span>, a Game Developer and DigiPen Academy Busan graduate. 
+                                I specialize in custom engine architecture and creating immersive experiences.
+                            </p>
+                            <div className="flex flex-wrap gap-5">
+                                <button onClick=${() => scrollToSection('projects')} className="px-10 py-4 bg-primary text-white font-bold rounded-2xl hover:bg-rose-700 transition-all shadow-xl shadow-rose-200 flex items-center gap-3 active:scale-95">
+                                    Explore Projects <span className="material-icons text-xl">rocket_launch</span>
+                                </button>
+                                <button onClick=${() => scrollToSection('contact')} className="px-10 py-4 bg-white text-slate-800 border border-slate-200 font-bold rounded-2xl hover:bg-slate-50 transition-all active:scale-95 shadow-sm">
+                                    Contact
+                                </button>
+                            </div>
+                        </div>
+                        <div className="relative">
+                            <div className="relative z-10 grid grid-cols-2 gap-6 items-start">
+                                <div className="rounded-[2.5rem] overflow-hidden border-4 border-white shadow-2xl aspect-[3/4.5] bg-slate-200">
+                                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800&auto=format&fit=crop" className="w-full h-full object-cover" loading="eager" />
+                                </div>
+                                <div className="space-y-6">
+                                    <div className="rounded-[2.5rem] overflow-hidden border-4 border-white shadow-2xl aspect-square bg-slate-200">
+                                        <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?q=80&w=800&auto=format&fit=crop" className="w-full h-full object-cover" loading="eager" />
+                                    </div>
+                                    <div className="rounded-[2.5rem] overflow-hidden border-4 border-white shadow-2xl aspect-square bg-slate-200">
+                                        <img src="https://images.unsplash.com/photo-1614850523296-d8c1af93d400?q=80&w=800&auto=format&fit=crop" className="w-full h-full object-cover" loading="eager" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="absolute -bottom-10 -right-6 w-64 h-64 bg-slate-50 rounded-full blur-3xl -z-10 opacity-60"></div>
+                        </div>
+                    </div>
+                </section>
+            `;
+        };
+
+        const TechnicalSkills = () => html`
+            <section className="py-16 bg-slate-50/50 scroll-mt-24" id="skills">
+                <div className="max-w-7xl mx-auto px-6">
+                    <div className="flex items-center gap-2 mb-10">
+                        <span className="material-icons text-primary text-xl">settings</span>
+                        <h2 className="text-2xl font-display font-bold text-slate-900">Technical Skills</h2>
+                    </div>
+                    <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
+                        ${SKILLS.map(skill => html`
+                            <div key=${skill.name} className="bg-white p-8 rounded-2xl border border-slate-100 flex flex-col items-center justify-center gap-4 hover:shadow-xl hover:-translate-y-1 transition-all group">
+                                <div className="w-16 h-16 rounded-xl bg-slate-50 flex items-center justify-center p-3 group-hover:bg-slate-100 transition-colors">
+                                    <img src=${skill.logo} alt=${skill.name} className="w-full h-full object-contain group-hover:scale-110 transition-transform" />
+                                </div>
+                                <span className="text-sm font-bold text-slate-700">${skill.name}</span>
+                            </div>
+                        `)}
+                    </div>
+                </div>
+            </section>
+        `;
+
+        const InterpersonalSkills = () => html`
+            <section className="py-20 bg-white scroll-mt-24">
+                <div className="max-w-7xl mx-auto px-6">
+                    <div className="flex items-center gap-2 mb-10">
+                        <span className="material-icons text-primary text-xl">groups</span>
+                        <h2 className="text-2xl font-display font-bold text-slate-900">Interpersonal Skills</h2>
+                    </div>
+                    <div className="grid md:grid-cols-2 gap-8">
+                        <div className="bg-slate-50 p-10 rounded-3xl relative overflow-hidden group">
+                            <h3 className="text-xl font-bold text-slate-900 mb-4">Communication & Collaboration</h3>
+                            <p className="text-slate-600 leading-relaxed">
+                                Communication within the team was crucial throughout the game jam projects. We held regular scrum meetings and checked progress every hour.
+                            </p>
+                        </div>
+                        <div className="bg-slate-50 p-10 rounded-3xl relative overflow-hidden group">
+                            <h3 className="text-xl font-bold text-slate-900 mb-4">Leadership & Mediation</h3>
+                            <p className="text-slate-600 leading-relaxed">
+                                I mediated between graphic designers and programmers to ensure smooth communication and aligned functional requirements.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        `;
+
+        const FeaturedProjects = () => html`
+            <section className="py-32 bg-[#0A0D17] text-white scroll-mt-24" id="projects">
+                <div className="max-w-7xl mx-auto px-6">
+                    <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-20">
+                        <div>
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800 text-primary text-[10px] font-bold uppercase tracking-widest mb-4">Project Portfolio</div>
+                            <h2 className="text-4xl md:text-5xl font-display font-bold">Featured Projects</h2>
+                        </div>
+                        <p className="text-slate-400 max-w-md text-lg">A selection of works showcasing technical versatility across different game engines.</p>
+                    </div>
+                    <div className="grid md:grid-cols-2 gap-12">
+                        ${PROJECTS.map(p => html`
+                            <div key=${p.title} className="group flex flex-col bg-slate-900/40 border border-slate-800 rounded-[2.5rem] overflow-hidden hover:border-primary/40 transition-all duration-500">
+                                <div className="h-72 relative bg-slate-950 overflow-hidden">
+                                    <img src=${p.img} className="w-full h-full object-cover opacity-60 group-hover:opacity-90 transition-all" />
+                                    <div className="absolute top-6 right-6 bg-white/10 backdrop-blur px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest">${p.platform}</div>
+                                </div>
+                                <div className="p-12">
+                                    <h3 className="text-3xl font-display font-bold group-hover:text-primary mb-6">${p.title}</h3>
+                                    <div className="flex items-center gap-3 mb-6">
+                                        <span className="text-[11px] font-bold text-primary tracking-widest uppercase">${p.role}</span>
+                                        <span className="text-[11px] font-medium text-slate-500">${p.date}</span>
+                                    </div>
+                                    <p className="text-slate-400 leading-relaxed mb-8">${p.desc}</p>
+                                </div>
+                            </div>
+                        `)}
+                    </div>
+                </div>
+            </section>
+        `;
+
+        const WorkExperience = () => html`
+            <section className="py-24 bg-slate-50/50 scroll-mt-24" id="experience">
+                <div className="max-w-7xl mx-auto px-6">
+                    <div className="flex items-center gap-2 mb-16">
+                        <span className="material-icons text-primary text-xl">work</span>
+                        <h2 className="text-3xl font-display font-bold text-slate-900">Technical Experience</h2>
+                    </div>
+                    <div className="grid md:grid-cols-3 gap-8">
+                        ${EXPERIENCES.map(e => html`
+                            <div key=${e.title} className="bg-white p-10 rounded-3xl border border-slate-100 hover:shadow-xl transition-all group">
+                                <span className="material-icons text-3xl text-primary/40 group-hover:text-primary mb-8 transition-colors">${e.icon}</span>
+                                <h3 className="text-xl font-bold text-slate-900 mb-1">${e.title}</h3>
+                                <p className="text-[10px] font-bold text-slate-400 tracking-wider uppercase mb-5">${e.sub}</p>
+                                <p className="text-slate-600 text-sm leading-relaxed">${e.desc}</p>
+                            </div>
+                        `)}
+                    </div>
+                </div>
+            </section>
+        `;
+
+        const LeadershipExperience = () => {
+            const items = [
+                { title: 'Team Coordination', desc: 'Project management through regular scrums and priority setting.' },
+                { title: 'Decision Making', desc: 'Effective role assignment based on team skills.' },
+                { title: 'Project Management', desc: 'Setting clear milestones and organizing progress.' },
+                { title: 'Version Control', desc: 'Efficient collaboration using Git for conflict resolution.' }
+            ];
+            return html`
+                <section className="py-24 bg-white scroll-mt-24" id="leadership">
+                    <div className="max-w-7xl mx-auto px-6">
+                        <div className="flex items-center gap-2 mb-12">
+                            <span className="material-icons text-primary text-xl">diversity_3</span>
+                            <h2 className="text-3xl font-display font-bold text-slate-900">Leadership & Collaboration</h2>
+                        </div>
+                        <div className="bg-slate-50 p-12 rounded-[40px] border border-slate-100 grid md:grid-cols-2 gap-x-16 gap-y-12">
+                            ${items.map(i => html`
+                                <div key=${i.title} className="flex gap-4">
+                                    <div className="flex-shrink-0 w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center">
+                                        <span className="material-icons text-xs">check</span>
+                                    </div>
+                                    <div>
+                                        <h4 className="text-lg font-bold text-slate-900 mb-2">${i.title}</h4>
+                                        <p className="text-slate-600 text-sm">${i.desc}</p>
+                                    </div>
+                                </div>
+                            `)}
+                        </div>
+                    </div>
+                </section>
+            `;
+        };
+
+        const Footer = () => html`
+            <footer className="bg-slate-900 text-slate-400 py-20 scroll-mt-24" id="contact">
+                <div className="max-w-7xl mx-auto px-6 text-center md:text-left">
+                    <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-20">
+                        <div>
+                            <h2 className="text-4xl font-display font-bold text-white mb-4">Let's Connect</h2>
+                            <p className="max-w-sm text-lg">Open to discussing projects, creative ideas or collaboration opportunities.</p>
+                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-20 gap-y-8">
+                            <div className="space-y-4">
+                                <div className="flex items-center gap-4 text-slate-200"><span className="material-icons text-primary">phone</span>+8210 6858 1767</div>
+                                <div className="flex items-center gap-4 text-slate-200"><span className="material-icons text-primary">email</span>rima0502@naver.com</div>
+                            </div>
+                            <div className="space-y-4">
+                                <div className="flex items-center gap-4 text-slate-200"><span className="material-icons text-primary">link</span>LinkedIn: dongrimkang</div>
+                                <div className="flex items-center gap-4 text-slate-200"><span className="material-icons text-primary">code</span>Github: rima0502</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="pt-10 border-t border-slate-800 text-center text-sm">© 2025 Dongrim Kang. All rights reserved.</div>
+                </div>
+            </footer>
+        `;
+
+        const AIChat = () => {
+            const [isOpen, setIsOpen] = useState(false);
+            const [messages, setMessages] = useState([{ role: 'model', text: 'Hi! Ask me anything about Dongrim!' }]);
+            const [input, setInput] = useState('');
+            const [isLoading, setIsLoading] = useState(false);
+            const scrollRef = useRef(null);
+
+            useEffect(() => { if (scrollRef.current) scrollRef.current.scrollTop = scrollRef.current.scrollHeight; }, [messages]);
+
+            const handleSend = async () => {
+                if (!input.trim() || isLoading) return;
+                const userMsg = input;
+                setInput('');
+                setMessages(prev => [...prev, { role: 'user', text: userMsg }]);
+                setIsLoading(true);
+
+                try {
+                    const ai = new GoogleGenAI({ apiKey: window.process.env.API_KEY || '' });
+                    const response = await ai.models.generateContent({
+                        model: 'gemini-3-flash-preview',
+                        contents: [{ role: 'user', parts: [{ text: "Portfolio context: Dongrim is a game developer. User question: " + userMsg }] }],
+                        config: { systemInstruction: "Concise portfolio assistant." }
+                    });
+                    setMessages(prev => [...prev, { role: 'model', text: response.text || "I'm having trouble responding." }]);
+                } catch (e) {
+                    setMessages(prev => [...prev, { role: 'model', text: "API Error." }]);
+                } finally { setIsLoading(false); }
+            };
+
+            return html`
+                <div className="fixed bottom-6 right-6 z-[100]">
+                    ${isOpen ? html`
+                        <div className="bg-white w-80 md:w-96 h-[500px] rounded-3xl shadow-2xl border border-slate-200 flex flex-col overflow-hidden animate-in">
+                            <div className="bg-primary p-4 text-white flex justify-between items-center">
+                                <div className="flex items-center gap-2"><span className="material-icons">smart_toy</span><span className="font-bold">Dongrim AI</span></div>
+                                <button onClick=${() => setIsOpen(false)}><span className="material-icons">close</span></button>
+                            </div>
+                            <div ref=${scrollRef} className="flex-grow p-4 overflow-y-auto space-y-4 bg-slate-50">
+                                ${messages.map(m => html`
+                                    <div className="flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}">
+                                        <div className="max-w-[85%] p-3 rounded-2xl text-sm ${m.role === 'user' ? 'bg-primary text-white shadow-md' : 'bg-white border text-slate-700 shadow-sm'}">${m.text}</div>
+                                    </div>
+                                `)}
+                            </div>
+                            <div className="p-4 bg-white border-t flex gap-2">
+                                <input value=${input} onChange=${e => setInput(e.target.value)} onKeyDown=${e => e.key === 'Enter' && handleSend()} className="flex-grow bg-slate-100 rounded-xl px-4 py-2 text-sm outline-none focus:ring-2 focus:ring-primary" placeholder="Ask me..." />
+                                <button onClick=${handleSend} className="bg-primary text-white p-2 rounded-xl"><span className="material-icons">send</span></button>
+                            </div>
+                        </div>
+                    ` : html`
+                        <button onClick=${() => setIsOpen(true)} className="bg-primary text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center hover:scale-110 active:scale-95 transition-all">
+                            <span className="material-icons">chat</span>
+                        </button>
+                    `}
+                </div>
+            `;
+        };
+
+        const App = () => html`
+            <div className="min-h-screen flex flex-col relative">
+                <${Header} />
+                <main>
+                    <${Hero} />
+                    <${TechnicalSkills} />
+                    <${InterpersonalSkills} />
+                    <${FeaturedProjects} />
+                    <${WorkExperience} />
+                    <${LeadershipExperience} />
+                </main>
+                <${Footer} />
+                <${AIChat} />
+            </div>
+        `;
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(html`<${App} />`);
+    </script>
 <script type="module" src="/index.tsx"></script>
 </body>
 </html>
